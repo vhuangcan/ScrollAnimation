@@ -16,5 +16,5 @@
 
 ### 使用方法
 ``` bash
-  let scrollAnimation = new ScrollAnimation(el,option);
+  let scrollAnimation = new ScrollAnimation(el,option)
 ```
