@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="hc"/>
+    <meta name="description" content="hc"/>
+    <meta name="author" content="hc"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href=""/><!--iPhone  150x150 像素-->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href=""/><!--iPad  300x300 像素-->
+    <title></title>
+    <!--[if lt IE 9]>
+    <script>window.location.href = 'oldbrowser.html';</script><![endif]-->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            font-size: 0;
+        }
+        li {
+            display: inline-block;
+            list-style: none;
+            width: 33.33%;
+            height: 420px;
+            visibility: hidden;
+        }
+
+        /* Effect: Scale up */
+        .animate-scale_up {
+            visibility: visible !important;
+            animation: scaleUp 0.65s ease-in-out forwards;
+        }
+
+        @keyframes scaleUp {
+            from {
+                opacity: 0;
+                transform: scale(0.6);
+            }
+            to {
+                -webkit-transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-wrapper">
+    <ul id="ul">
+
+    </ul>
+</div>
+<script src="../ScrollAnimation.js"></script>
+<script>
+  function render() {
+    for (var i = 0; i < 30; i++){
+      var createEl = document.createElement('li');
+      createEl.style.backgroundColor = '#' + Math.random().toString(16).substring(2).substr(0, 6);
+      createEl.classList.add('scale_up');
+      document.getElementById('ul').appendChild(createEl);
+    }
+  }
+  render();
+  let scrollAnimation = new ScrollAnimation('.scale_up',{
+    className: 'animate-scale_up'
+  })
+</script>
+</body>
+</html>
