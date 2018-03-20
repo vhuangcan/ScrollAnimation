@@ -21,4 +21,11 @@
 ### 使用方法
 ``` bash
   let scrollAnimation = new ScrollAnimation(el,option)
+  异步更新观测元素
+  scrollAnimation._refresh()
+  移除所添加动画类名
+  scrollAnimation._removeClassAnimation()
+  当 IntersectionObserver API浏览器不兼容的时候将默认采取添加scroll事件方法处理元素监测，
+  此时暴露出移除scroll事件方法
+  scrollAnimation._destroy()
 ```
