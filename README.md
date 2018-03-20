@@ -18,7 +18,7 @@
 |  maxDuration | 动画持续最长时间 | Number|  0.8  |
 |  minDuration | 动画持续最短时间  | Number| 0.4 |
 
-### 使用方法
+## 使用方法
 ``` bash
   let scrollAnimation = new ScrollAnimation(el,option)
   
