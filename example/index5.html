@@ -23,6 +23,8 @@
 
         ul {
             font-size: 0;
+            perspective: 10000px;
+            overflow: hidden;
         }
 
         li {
@@ -32,7 +34,6 @@
             height: 420px;
             visibility: hidden;
         }
-
         .all-link{
             margin: 60px 0;
             text-align: center;
@@ -49,18 +50,17 @@
             color: #999;
         }
 
-        .animate-scale_up {
-            visibility: visible !important;
-            animation: scaleUp 0.65s ease-in-out forwards;
+        .animate-move_up {
+            -webkit-transform: translateY(200px);
+            transform: translateY(200px);
+            -webkit-animation: moveUp 0.65s ease forwards;
+            animation: moveUp 0.65s ease forwards;
         }
 
-        @keyframes scaleUp {
-            from {
-                opacity: 0;
-                transform: scale(0.6);
-            }
-            to {
-                -webkit-transform: scale(1);
+        @keyframes moveUp {
+            100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
                 opacity: 1;
             }
         }
@@ -70,14 +70,13 @@
 <body>
 <div class="container-wrapper">
     <div class="all-link">
-        <a class='active' href="index.html">Demo1</a>
+        <a href="index.html">Demo1</a>
         <a href="index2.html">Demo2</a>
         <a href="index3.html">Demo3</a>
         <a href="index4.html">Demo4</a>
-        <a href="index5.html">Demo5</a>
+        <a class='active' href="index5.html">Demo5</a>
         <a href="index6.html">Demo6</a>
     </div>
-
     <ul id="ul">
 
     </ul>
@@ -96,7 +95,9 @@
 
   render();
   let scrollAnimation = new ScrollAnimation('.item', {
-    className: 'animate-scale_up'
+    className: 'animate-move_up',
+    parentClassName: '#ul',
+    perspectiveOrigin: true
   })
 </script>
 </body>

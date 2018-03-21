@@ -23,6 +23,7 @@
 
         ul {
             font-size: 0;
+            perspective: 10000px;
         }
 
         li {
@@ -32,7 +33,6 @@
             height: 420px;
             visibility: hidden;
         }
-
         .all-link{
             margin: 60px 0;
             text-align: center;
@@ -49,18 +49,26 @@
             color: #999;
         }
 
-        .animate-scale_up {
-            visibility: visible !important;
-            animation: scaleUp 0.65s ease-in-out forwards;
+        .animate-pop_up {
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+            -webkit-animation: popUp .8s ease-in forwards;
+            animation: popUp .8s ease-in forwards;
         }
 
-        @keyframes scaleUp {
-            from {
-                opacity: 0;
-                transform: scale(0.6);
+        @keyframes popUp {
+            70% {
+                -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+                opacity: .8;
+                -webkit-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
             }
-            to {
+            100% {
                 -webkit-transform: scale(1);
+                transform: scale(1);
                 opacity: 1;
             }
         }
@@ -70,14 +78,13 @@
 <body>
 <div class="container-wrapper">
     <div class="all-link">
-        <a class='active' href="index.html">Demo1</a>
+        <a href="index.html">Demo1</a>
         <a href="index2.html">Demo2</a>
         <a href="index3.html">Demo3</a>
         <a href="index4.html">Demo4</a>
         <a href="index5.html">Demo5</a>
-        <a href="index6.html">Demo6</a>
+        <a class='active' href="index6.html">Demo6</a>
     </div>
-
     <ul id="ul">
 
     </ul>
@@ -96,7 +103,9 @@
 
   render();
   let scrollAnimation = new ScrollAnimation('.item', {
-    className: 'animate-scale_up'
+    className: 'animate-pop_up',
+    parentClassName: '#ul',
+    perspectiveOrigin: true
   })
 </script>
 </body>
