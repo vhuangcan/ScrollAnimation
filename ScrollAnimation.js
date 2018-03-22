@@ -19,6 +19,10 @@ class ScrollAnimation {
 
     this.resize = '' //用来解绑resize事件
 
+    this.oldVal = '' //记录refresh前dom个数
+
+    this.io = '' //用来保存交叉观察器实例
+
     this._init()
 
   }
@@ -54,13 +58,17 @@ class ScrollAnimation {
 
     if (this._checkApi()) {
 
-      this.observer = this._getEl()
+      this.oldVal = this.oldVal !== '' ? this.oldVal : 0
+
+      this.observer = this._getEl().slice( this.oldVal,this._getEl().length)
 
       this.observer.forEach(v => {
 
-        window.io.observe(v)
+        this.io.observe(v)
 
       })
+
+      this.oldVal = this._getEl().length
 
     } else {
 
@@ -76,10 +84,10 @@ class ScrollAnimation {
 
   }
 
-  //IntersectionObserver 开启交叉观察期监听模式
+  //IntersectionObserver 开启交叉观察器监听模式
   _watchers() {
 
-    window.io = new IntersectionObserver(change => {
+    this.io = new IntersectionObserver(change => {
 
       change.forEach(v => {
 
@@ -93,7 +101,7 @@ class ScrollAnimation {
 
           this._addClassAnimation(v.target)
 
-          io.unobserve(v.target)
+          this.io.unobserve(v.target)
 
         }
       })
