@@ -56,11 +56,11 @@ class ScrollAnimation {
   //更新元素监听个数
   _refresh() {
 
+    this.oldVal = this.oldVal !== '' ? this.oldVal : 0
+
     if (this._checkApi()) {
 
-      this.oldVal = this.oldVal !== '' ? this.oldVal : 0
-
-      this.observer = this._getEl().slice( this.oldVal,this._getEl().length)
+      this.observer = this._getEl().slice(this.oldVal, this._getEl().length)
 
       this.observer.forEach(v => {
 
@@ -68,13 +68,13 @@ class ScrollAnimation {
 
       })
 
-      this.oldVal = this._getEl().length
-
     } else {
 
-      return this.observer = this._getEl()
+      this.observer = this._getEl().slice(this.oldVal, this._getEl().length)
 
     }
+
+    this.oldVal = this._getEl().length
   }
 
   //获取监听元素
@@ -117,12 +117,11 @@ class ScrollAnimation {
 
     let wh = document.documentElement.clientHeight || window.innerHeight
 
-    this._refresh().forEach(v => {
+    this.observer.forEach(v => {
 
       if (v.getBoundingClientRect().top < wh - v.clientHeight * this.options.ratio) {
 
         if (v.classList.contains(this.options.className)) return
-
 
         this._addClassAnimation(v)
 
