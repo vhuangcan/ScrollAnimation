@@ -36,6 +36,8 @@ class ScrollAnimation {
 
     } else {
 
+      this.observer = this._getEl()
+
       this._isView()
 
       this._scroll()
