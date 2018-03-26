@@ -1,0 +1,24 @@
+{
+  "name": "ScrollAnimation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/ScrollAnimation.js",
+  "scripts": {
+    "server": "export type=development&&webpack-dev-server",
+    "dev-build": "export type=development&&webpack",
+    "prod-build": "export type=production&&webpack"
+  },
+  "author": "hc",
+  "license": "ISC",
+  "dependencies": {
+    "babel-runtime": "^6.26.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1"
+  }
+}

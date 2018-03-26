@@ -1,5 +1,6 @@
 class ScrollAnimation {
 
+  //构造函数
   constructor(el, option) {
 
     this.el = /\./.test(el) ? el : '.' + el
@@ -142,7 +143,7 @@ class ScrollAnimation {
 
   }
 
-  //或许实时滚条高度和文档高度
+  //获取实时滚条高度和文档高度
   _getScrolllTopAndDocH() {
 
     let docH = document.querySelector(this.options.parentClassName).clientHeight
