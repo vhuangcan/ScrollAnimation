@@ -218,11 +218,11 @@ class ScrollAnimation {
 
     let timer = null, preTime
 
-    return function () {
+    return () => {
 
       clearTimeout(timer)
 
-      let curTime = Date.now(), context = this, args = arguments
+      let curTime = Date.now(), args = arguments
 
       if (!preTime) {
         preTime = curTime
@@ -232,7 +232,7 @@ class ScrollAnimation {
 
       if (remaining <= 0) {
 
-        fn.apply(context, args)
+        fn.apply(this, args)
 
         preTime = curTime
 
@@ -242,7 +242,7 @@ class ScrollAnimation {
 
         timer = setTimeout(() => {
 
-          fn.apply(context, args)
+          fn.apply(this, args)
 
           preTime = curTime
 
