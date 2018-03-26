@@ -10,12 +10,12 @@
 
 | 参数名 | 描述 | 类型 | 默认值 |
 | - | :-: | :-: | :-: | 
-| el | 被观测的Dom元素(class类名)| String | none |
+| el | 被观测的Dom元素(class类名)| String |  |
 | option | 包含下面所有参数 | Object |    |
-| className | 被观测的元素出现在视口添加动画类名 | String | none  |
+| className | 被观测的元素出现在视口添加动画类名 | String |   |
 |  ratio | 元素可见的比例 | Number | 0.25  |
 |  perspectiveOrigin | 设置3d动画元素Y轴距离 | Boolean | false  |
-|  parentClassName| 3d动画模式下父元素 | String | none |
+|  parentClassName| 3d动画模式下父元素 | String |  |
 |  maxDuration | 动画持续最长时间 | Number|  0.8  |
 |  minDuration | 动画持续最短时间  | Number| 0.4 |
 
