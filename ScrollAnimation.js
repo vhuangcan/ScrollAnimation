@@ -219,14 +219,16 @@ class ScrollAnimation {
 
     let timer = null, preTime
 
-    return () => {
+    return (...args) => {
+      
+      if(timer){     
+        clearTimeout(timer)
+      }
 
-      clearTimeout(timer)
-
-      let curTime = Date.now(), args = arguments
+      let curTime = Date.now()
 
       if (!preTime) {
-        preTime = curTime
+        preTime = curTime  
       }
 
       let remaining = delay - (curTime - preTime)
@@ -238,8 +240,6 @@ class ScrollAnimation {
         preTime = curTime
 
       } else {
-
-        clearTimeout(timer)
 
         timer = setTimeout(() => {
 
